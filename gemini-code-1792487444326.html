@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ศิลปะและวัฒนธรรมไทย | Thai Arts and Culture</title>
+    <!-- โหลดฟอนต์ภาษาไทยจาก Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700&family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ================= CSS VARIABLES & RESET ================= */
+        :root {
+            --primary-color: #8C1C13; /* สีแดงเลือดหมู */
+            --secondary-color: #D4AF37; /* สีทอง */
+            --bg-light: #FDFBF7; /* สีครีม */
+            --bg-darker: #f4eee1; /* สีครีมเข้ม (สำหรับสลับพื้นหลัง) */
+            --text-dark: #3E2723; /* สีน้ำตาลเข้ม */
+            --text-light: #FFFFFF;
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, .nav-logo, .btn {
+            font-family: 'Prompt', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ================= UTILITIES ================= */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 50px;
+            position: relative;
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            display: block;
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .img-label {
+            font-size: 0.8rem;
+            color: #777;
+            display: block;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* ================= NAVIGATION ================= */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(253, 251, 247, 0.98);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-item a {
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: var(--transition);
+            font-size: 0.95rem;
+            padding: 5px 0;
+        }
+
+        .nav-item a:hover, .nav-item a.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            background: none;
+            border: none;
+        }
+
+        /* ================= HERO SECTION ================= */
+        .hero {
+            height: 100vh;
+            /* ใช้ภาพสถาปัตยกรรมวัดไทยเป็นภาพปก */
+            background: linear-gradient(rgba(62, 39, 35, 0.7), rgba(140, 28, 19, 0.6)), url('https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            padding-top: 60px;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+            letter-spacing: 2px;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            border-radius: 30px;
+            transition: var(--transition);
+            border: 2px solid var(--secondary-color);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        /* ================= CARD LAYOUT ================= */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-bottom: 4px solid transparent;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-bottom: 4px solid var(--secondary-color);
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .card:hover img {
+            transform: scale(1.08);
+        }
+
+        .card-content {
+            padding: 25px;
+            flex-grow: 1;
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        /* ================= SECTIONS BACKGROUNDS ================= */
+        #arts, #traditions, #regions {
+            background-color: var(--bg-light);
+        }
+        
+        #dance, #food, #textiles, #gallery {
+            background-color: var(--bg-darker);
+        }
+
+        /* ================= GALLERY ================= */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            cursor: pointer;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            color: white;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay h4 {
+            margin-bottom: 5px;
+            color: var(--secondary-color);
+        }
+
+        /* ================= LIGHTBOX ================= */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.92);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .lightbox-close:hover {
+            color: var(--secondary-color);
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 75vh;
+            border: 2px solid var(--secondary-color);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-caption {
+            color: white;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-family: 'Prompt', sans-serif;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        /* ================= REFERENCES ================= */
+        .references-box {
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .references-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .references-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .references-list li::before {
+            content: '📌';
+            position: absolute;
+            left: 0;
+            font-size: 1rem;
+        }
+
+        .references-list a {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .back-to-top {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 30px;
+            transition: var(--transition);
+            font-family: 'Prompt', sans-serif;
+            border: 1px solid transparent;
+        }
+
+        .back-to-top:hover {
+            background: transparent;
+            border: 1px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 992px) {
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: -100%;
+                flex-direction: column;
+                background: rgba(253, 251, 247, 0.98);
+                width: 100%;
+                text-align: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+                transition: 0.4s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">Thai<span>Culture</span></div>
+            <button class="hamburger" aria-label="Menu">☰</button>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link active">หน้าแรก</a></li>
+                <li class="nav-item"><a href="#arts" class="nav-link">ศิลปกรรม</a></li>
+                <li class="nav-item"><a href="#dance" class="nav-link">นาฏศิลป์และดนตรี</a></li>
+                <li class="nav-item"><a href="#traditions" class="nav-link">ประเพณี</a></li>
+                <li class="nav-item"><a href="#food" class="nav-link">อาหารไทย</a></li>
+                <li class="nav-item"><a href="#textiles" class="nav-link">ผ้าและการแต่งกาย</a></li>
+                <li class="nav-item"><a href="#regions" class="nav-link">วัฒนธรรม 4 ภาค</a></li>
+                <li class="nav-item"><a href="#gallery" class="nav-link">คลังภาพ</a></li>
+                <li class="nav-item"><a href="#references" class="nav-link">แหล่งอ้างอิง</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <h1>ศิลปะและวัฒนธรรมไทย</h1>
+            <p>เรียนรู้ความงดงาม ภูมิปัญญา และมรดกทางวัฒนธรรมที่สะท้อนเอกลักษณ์ของประเทศไทย</p>
+            <a href="#arts" class="btn">เริ่มเรียนรู้</a>
+        </div>
+    </header>
+
+    <!-- ศิลปกรรมไทย -->
+    <section id="arts" class="container">
+        <h2 class="section-title">ศิลปกรรมไทย</h2>
+        <div class="grid-layout">
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <!-- ใช้ภาพวัดพระแก้วเป็นตัวแทนสถาปัตยกรรม -->
+                    <img src="https://images.unsplash.com/photo-1580889223351-5ee1f964a2d8?auto=format&fit=crop&w=800&q=80" alt="สถาปัตยกรรมไทย วัดพระแก้ว">
+                </div>
+                <div class="card-content">
+                    <h3>สถาปัตยกรรมไทย</h3>
+                    <p>สถาปัตยกรรมที่สะท้อนถึงคติความเชื่อทางศาสนาพุทธ เช่น วัดพระศรีรัตนศาสดาราม เจดีย์ทรงไทย และพระบรมมหาราชวัง</p>
+                    <span class="img-label">*ภาพประกอบ: สถาปัตยกรรมวัดไทย</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1598284534125-961a5c6ee160?auto=format&fit=crop&w=800&q=80" alt="จิตรกรรมฝาผนังไทย">
+                </div>
+                <div class="card-content">
+                    <h3>จิตรกรรมไทย</h3>
+                    <p>ศิลปะการวาดภาพที่มักพบตามฝาผนังโบสถ์วิหาร นำเสนอเรื่องราวเกี่ยวกับพุทธประวัติ ทศชาติชาดก และวิถีชีวิตชาวบ้าน</p>
+                    <span class="img-label">*ภาพประกอบ: จิตรกรรมฝาผนัง</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1558260481-b541d22b270a?auto=format&fit=crop&w=800&q=80" alt="ประติมากรรมพระพุทธรูป">
+                </div>
+                <div class="card-content">
+                    <h3>ประติมากรรมไทย</h3>
+                    <p>ศิลปะการปั้นและการหล่อที่โดดเด่น โดยเฉพาะการสร้างพระพุทธรูปในยุคสมัยต่าง ๆ เช่น ศิลปะสุโขทัยที่มีความอ่อนช้อย</p>
+                    <span class="img-label">*ภาพประกอบ: ประติมากรรมพระพุทธรูป</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1518002054494-3a6f94352e9d?auto=format&fit=crop&w=800&q=80" alt="หัตถศิลป์และงานแกะสลัก">
+                </div>
+                <div class="card-content">
+                    <h3>หัตถศิลป์ไทย</h3>
+                    <p>งานฝีมือที่อาศัยความประณีต เช่น เครื่องเบญจรงค์ เครื่องจักสาน และงานแกะสลักไม้ที่สืบทอดจากภูมิปัญญาท้องถิ่น</p>
+                    <span class="img-label">*ภาพประกอบ: งานหัตถศิลป์ทั่วไป</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- นาฏศิลป์และดนตรีไทย -->
+    <section id="dance" class="container">
+        <h2 class="section-title">นาฏศิลป์และดนตรีไทย</h2>
+        <div class="grid-layout">
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1586943101559-4d4f1530d988?auto=format&fit=crop&w=800&q=80" alt="นาฏศิลป์ รำไทย">
+                </div>
+                <div class="card-content">
+                    <h3>รำไทยและการแสดงละคร</h3>
+                    <p>ศิลปะการร่ายรำที่มีความอ่อนช้อย งดงาม ใช้ภาษาท่าทางสื่อความหมาย พร้อมเครื่องแต่งกายที่เป็นเอกลักษณ์</p>
+                    <span class="img-label">*ภาพประกอบ: การรำไทย</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1621255536098-b64817a783b9?auto=format&fit=crop&w=800&q=80" alt="เครื่องดนตรีไทย">
+                </div>
+                <div class="card-content">
+                    <h3>ดนตรีไทย</h3>
+                    <p>รวมเครื่องดนตรีประเภท ดีด สี ตี เป่า เช่น ระนาดเอก จะเข้ ขิม ซอ และขลุ่ย ใช้บรรเลงประกอบพิธีกรรมและการแสดง</p>
+                    <span class="img-label">*ภาพประกอบ: เครื่องดนตรีพื้นบ้าน (ทั่วไป)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ประเพณีและเทศกาล -->
+    <section id="traditions" class="container">
+        <h2 class="section-title">ประเพณีและเทศกาล</h2>
+        <div class="grid-layout">
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1522967664483-3c914b433be5?auto=format&fit=crop&w=800&q=80" alt="เทศกาลสงกรานต์">
+                </div>
+                <div class="card-content">
+                    <h3>สงกรานต์</h3>
+                    <p>วันขึ้นปีใหม่ไทย โดดเด่นด้วยการทำบุญตักบาตร รดน้ำดำหัวผู้ใหญ่ และการเล่นน้ำเพื่อความสนุกสนาน</p>
+                    <span class="img-label">*ภาพประกอบ: เทศกาลสงกรานต์</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1572970557451-8592eb094ec2?auto=format&fit=crop&w=800&q=80" alt="ลอยกระทงและยี่เป็ง">
+                </div>
+                <div class="card-content">
+                    <h3>ลอยกระทงและยี่เป็ง</h3>
+                    <p>ประเพณีขอขมาพระแม่คงคา โดยการประดิษฐ์กระทงลอยน้ำ และประเพณียี่เป็งของภาคเหนือที่มีการปล่อยโคมลอย</p>
+                    <span class="img-label">*ภาพประกอบ: การปล่อยโคมยี่เป็ง</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- อาหารไทย -->
+    <section id="food" class="container">
+        <h2 class="section-title">อาหารไทย (Thai Cuisine)</h2>
+        <div class="grid-layout">
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1548943487-a2e4f43b4850?auto=format&fit=crop&w=800&q=80" alt="ต้มยำกุ้ง">
+                </div>
+                <div class="card-content">
+                    <h3>ต้มยำกุ้ง</h3>
+                    <p>อาหารไทยภาคกลางที่เป็นที่รู้จักทั่วโลก โดดเด่นด้วยรสชาติ เปรี้ยว เผ็ด เค็ม และกลิ่นหอมของสมุนไพร</p>
+                    <span class="img-label">*ภาพประกอบ: ต้มยำกุ้ง</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&w=800&q=80" alt="ผัดไทย">
+                </div>
+                <div class="card-content">
+                    <h3>ผัดไทย</h3>
+                    <p>อาหารจานเดียวที่นำเส้นจันท์มาผัดกับไข่ เต้าหู้ กุ้งแห้ง ถั่วงอก ปรุงรสด้วยน้ำมะขามเปียกและน้ำตาลมะพร้าว</p>
+                    <span class="img-label">*ภาพประกอบ: ผัดไทย</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1626804475297-41609ea084eb?auto=format&fit=crop&w=800&q=80" alt="ส้มตำ">
+                </div>
+                <div class="card-content">
+                    <h3>ส้มตำ</h3>
+                    <p>เมนูยอดนิยมจากภาคตะวันออกเฉียงเหนือ ทำจากมะละกอดิบตำรวมกับเครื่องปรุง ให้รสชาติแซ่บจัดจ้าน</p>
+                    <span class="img-label">*ภาพประกอบ: ส้มตำ</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ผ้าไทยและการแต่งกาย -->
+    <section id="textiles" class="container">
+        <h2 class="section-title">ผ้าไทยและการแต่งกาย</h2>
+        <div class="grid-layout">
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1605335123985-e1104e9c70bd?auto=format&fit=crop&w=800&q=80" alt="ผ้าไหมไทย">
+                </div>
+                <div class="card-content">
+                    <h3>ผ้าไหมและผ้าทอ</h3>
+                    <p>ศิลปหัตถกรรมสิ่งทออันทรงคุณค่า เช่น ผ้าไหมมัดหมี่ ผ้าฝ้ายทอมือ และผ้าบาติกทางภาคใต้ สะท้อนลวดลายเอกลักษณ์</p>
